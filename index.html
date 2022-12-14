@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    
+
+    <script type="text/javascript" src="./javascripts/commandline.js"></script>
+    <script type="text/javascript" src="./javascripts/message.js"></script>
+
+    <title>Happy Birthday To Bich Quynh </title>
+  </head>
+
+  <body>
+    <code>DÀNH CHO MY ROOMATE </code> <code id="commandline1"></code>
+    <br/>
+    <code  id ="date" style="visibility: hidden">14/12/2022 </code>
+    <br/>
+    <code id = "system2" style="visibility: hidden">Hello Bích Quỳnh </code> <code id="commandline2" style="visibility: hidden">▋</code>
+    <br/>
+    <code id = "execute" style = "visibility: hidden">Mình muốn nói là : HappyBirthday...</code>
+    <br/>
+    <br/>
+    <img id = "baymax" style = "visibility: hidden" src="images/baymax.png">
+    <br/>
+    <code id = "message" style = "visibility: hidden"></code>
+    <br/>
+    <img id = "doodle" width ="250" height="400" src="" style = "visibility: hidden">
+    <br/>
+    
+    <!-- <audio id = "music" src='music/song.mp3'>music cannot play on your browser</audio> -->
+  </body>
+   
+  <script>
+    
+     const audioContainer = document.getElementById("audioContainer");
+    
+    var commandLine = new CommandLine();
+    var messageBox = new MessageBox();
+    //var message = new
+    // first command
+    var timer = setTimeout(function() {
+      document.getElementById("commandline1").innerText = commandLine.returnNextCommand();
+    }, 100);
+    timer = setTimeout(function() {
+      document.getElementById("commandline1").innerText = commandLine.returnNextCommand();
+    }, 200);
+    timer = setTimeout(function() {
+      document.getElementById("commandline1").innerText = commandLine.returnNextCommand();
+    }, 300);
+    timer = setTimeout(function() {
+      document.getElementById("commandline1").innerText = commandLine.returnNextCommand();
+    }, 400);
+    timer = setTimeout(function() {
+      document.getElementById("date").setAttribute("style","visibility: visible");
+      document.getElementById("system2").setAttribute("style","visibility: visible");
+      document.getElementById("commandline2").setAttribute("style","visibility: visible");
+      document.getElementById("commandline1").innerText = commandLine.returnNextCommand();
+    }, 1000);
+    // second command
+    for (var i = 0; i < 19; i+=1)
+      timer = setTimeout(function() {
+        document.getElementById("commandline2").innerText = commandLine.returnNextCommand();
+      }, 2000 + i * 100);
+    // execute
+    timer = setTimeout(function() {
+        document.getElementById("execute").setAttribute("style","visibility: visible");
+      }, 3900);
+    //baymax
+    timer = setTimeout(function() {
+        document.getElementById("baymax").setAttribute("style","visibility: visible");
+      }, 4900);
+    //wait
+    timer = setTimeout(function() {
+        document.getElementById("message").setAttribute("style","visibility: visible");
+      }, 4900);
+    for (var i = 0; i < 5; i+=1) {
+      timer = setTimeout(function() {
+      document.getElementById("message").innerText = messageBox.wait(document.getElementById("message").innerText);
+      }, 4900 + i * 500);
+    }
+    //welcome & play music
+    timer = setTimeout(function() {
+      messageBox.setWelcome(document.getElementById("message"));
+      messageBox.printWelcome();
+    }, 7000);
+
+    //wait
+    for (var i = 0; i < 20; i+=1) {
+      timer = setTimeout(function() {
+      document.getElementById("message").innerText = messageBox.wait(document.getElementById("message").innerText);
+      }, 13000 + i * 500);
+    }
+    // music
+    timer = setTimeout(function() {
+      // document.getElementById('music').play();
+     var audio = new Audio("music/song.mp3");
+     audio.play();
+    }, 13000);
+    //say something
+    timer = setTimeout(function() {
+      messageBox.saySomething(document.getElementById("message").innerText);
+    }, 23000);
+    // doodle
+    var countD = 0;
+    timer = setTimeout(function() {
+      document.getElementById("doodle").setAttribute("style","visibility: visible");
+      }, 33000 );
+    for (var i = 1; i <= 11; i+=1) {
+      timer = setTimeout(function() {
+      countD += 1;
+      document.getElementById("doodle").src = "images/" + countD + ".jpg";
+      }, 32000 + i * 1000);
+    }
+    // second
+    timer = setTimeout(function() {
+      document.getElementById("doodle").src = "";
+      document.getElementById("doodle").setAttribute("style","visibility: hidden");
+      messageBox.saySomethingSecond(document.getElementById("message").innerText);
+      }, 45000 );
+    //cake
+    timer = setTimeout(function() {
+      document.getElementById("doodle").width = 500;
+      document.getElementById("doodle").height = 400;
+      document.getElementById("doodle").src = "images/cake.png";
+      document.getElementById("doodle").setAttribute("style","visibility: visible");
+      }, 55150);
+      
+  </script>
+</html>
